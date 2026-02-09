@@ -8,11 +8,12 @@
 
 /* ===== HERO SECTION ===== */
 .hero {
-	min-height: 100vh;
+	min-height: 200vh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background: var(--gradient-hero);
+	/*background: var(--gradient-hero);*/
+	background-image: url(https://ik.imagekit.io/muusbm8ns/IMGS/IMGS-WEBP/IMGS-PORTAFOLIO-17.webp);
 	text-align: center;
 	padding: var(--space-2xl);
 }
@@ -22,6 +23,7 @@
 	color: white;
 	margin-bottom: var(--space-md);
 	font-weight: var(--font-weight-bold);
+	
 	opacity: 0;
 	transform: translateY(30px);
 	animation: fadeInUp 1s ease forwards;

@@ -14,10 +14,19 @@
 
 	/* ===== COLOR SYSTEM ===== */
 	/* Primary brand colors */
-	--color-primary: #1d4ed8;
-	--color-primary-hover: #1e40af;
-	--color-primary-light: #3b82f6;
-	--color-primary-dark: #1e3a8a;
+	/* Palette updated: wine red primary + coffee secondary + orange/yellow accents */
+	--color-primary: #6B0F1A; /* Wine / borgoña */
+	--color-primary-hover: #580D15; /* ~10% darker */
+	--color-primary-light: #A43A3F; /* lighter wine for accents */
+	--color-primary-dark: #3E0A0E; /* deep wine for strong contrast */
+
+	/* Secondary / supporting */
+	--color-secondary: #4B2E2A; /* Coffee brown */
+	--color-secondary-light: #7A554F;
+
+	/* Accent colors */
+	--color-accent-orange: #FF6A00; /* vivid orange */
+	--color-accent-yellow: #F2C94C; /* warm yellow */
 
 	/* Neutral colors for text and backgrounds */
 	--color-text-primary: #0f172a;
@@ -64,7 +73,9 @@
 
 	/* Font families */
 	--font-family-base: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-	--font-family-heading: var(--font-family-base);
+	/* Project brief: heading font extracted from project-brief.md */
+	/* Heading font: Barlow Condensed (Google Fonts link present in brief) */
+	--font-family-heading: 'Barlow Condensed', var(--font-family-base);
 	--font-family-mono: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Monaco, 'Courier New', monospace;
 
 	/* ===== SPACING SCALE ===== */
@@ -106,6 +117,12 @@
 	--z-modal: 50;
 	--z-popover: 60;
 	--z-tooltip: 70;
+
+	/* ===== GRADIENTS (chapter / hero) ===== */
+	--gradient-hero: linear-gradient(135deg, #6B0F1A 0%, #4B2E2A 100%);
+	--gradient-chapter-1: linear-gradient(135deg, #A43A3F 0%, #FF6A00 100%);
+	--gradient-chapter-2: linear-gradient(135deg, #4B2E2A 0%, #F2C94C 100%);
+	--gradient-chapter-3: linear-gradient(135deg, #6B0F1A 0%, #7A554F 100%);
 }
 
 /* ============================================
