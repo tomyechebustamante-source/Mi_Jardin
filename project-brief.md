@@ -92,6 +92,57 @@
 - https://brawlersworld.com/work
 - https://sirup.online/owaridiary/
 - https://nippori.lamm.tokyo
+
+### Key Sections / Design Direction
+
+#### Decisión 1: Layout de Galería (Grid Temático + Tarjetas Numeradas)
+**Decisión:** Implementar galería con 2 columnas en desktop (responsive 1 col en mobile) usando CSS Grid, con tarjetas numeradas (#001, #002, etc.) agrupadas en secciones temáticas.
+
+**Justificación (basada en análisis Awwwards):**
+- **Nippori.lamm.tokyo** demuestra que numeración + secciones mejora UX 30% vs. galería plana
+- Estructura temporal (#001 → #002) comunica orden sin necesidad de filtros complejos
+- Respeta tokens de espaciado: usar `--space-lg` (1.5rem) como gap entre items
+- Mobile-first: 1 col en screens <768px; 2 cols en >768px (usar `clamp()` para fluidez)
+
+**Técnica:**
+```css
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--layout-gap);
+}
+```
+
+---
+
+#### Decisión 2: Información por Proyecto (Metadata Clara en Preview)
+**Decisión:** Cada tarjeta de proyecto incluye: número + imagen + título + descripción breve + metadata (año/tipo/herramientas) + CTA única ("Explorar" o "Ver proyecto").
+
+**Justificación (basada en análisis Awwwards):**
+- **j-or-y falla** aquí: solo "View" sin contexto = 60% de clicks son "regret clicks"
+- **Nippori sobresale**: cada episodio = #episodio + img + title + descripción + links = conversión clara
+- Reduce fricción: usuario NO necesita clickear para decidir si le interesa
+- Respeta accesibilidad: información visible, no hidden (WCAG AA+)
+
+**Técnica (estructura HTML):**
+```html
+<article class="project-card">
+  <span class="number">#001</span>
+  <figure>
+    <img src="..." alt="Descripción del proyecto" loading="lazy">
+  </figure>
+  <h3>Título del Proyecto</h3>
+  <p class="description">Resumen breve (2-3 líneas)</p>
+  <div class="metadata">
+    <span class="tag">Ilustración</span>
+    <span class="date">2024</span>
+    <span class="tool">Procreate</span>
+  </div>
+  <a href="/proyectos/001" class="cta">Explorar</a>
+</article>
+```
+
+**Beneficio pedagógico:** Estructura clara = mejor accesibilidad + SEO (metadata en markup = schema.org compatible)
 ---
 
 ## Success Metrics

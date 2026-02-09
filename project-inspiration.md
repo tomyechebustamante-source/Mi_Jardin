@@ -92,6 +92,20 @@
 - **[Lynn Fisher](https://lynnandtonic.com/)**: Creative, playful personal site
 - **[Tobias Ahlin](https://tobiasahlin.com/)**: Minimalist designer portfolio (motion, typography)
 
+### 📚 Galerías de Ilustradores (Análisis Pedagógico)
+
+**Sitios analizados con foco en UX de galería + patrones transferibles:**
+
+- **[PF.J-or-Y](https://pf.j-or-y.com)** (Webdesigner + Frontend): Tipografía como protagonista; grid invisible; metadata creativo
+- **[Brawlers World](https://brawlersworld.com/work)** (Animator): Animación Rive como navegación; microinteracciones con audio; responsive detection
+- **[SIRUP Owari Diary](https://sirup.online/owaridiary/)** (Músico/Landing): Multi-plataforma linking (hub pattern); modal UI; grid adaptativo
+
+#### 🎯 Patrones Transferibles (Sin Copiar Estética)
+
+1. **Metadata en Tarjetas**: Mostrar contexto (año, tipo, herramientas) en card preview → evita clicks ciegos (vs. puro "View")
+2. **Secciones Temáticas + Numeración**: Episodios/Series con # (ej: #001, #002) comunican orden temporal + permiten scaneo rápido (vs. galería plana)
+3. **Jerarquía Tipográfica > Paleta Cromática**: Espaciado generoso + h1/h2/h3 clara crean legibilidad sin depender de colores (aprovechar tus tokens en `_variables.css`)
+
 ### Landing Pages
 
 - **[Stripe](https://stripe.com/)**: Clean, conversion-focused design
