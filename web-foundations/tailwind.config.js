@@ -36,6 +36,19 @@ module.exports = {
 				'text-secondary': 'var(--text-secondary)',
 				'bg-light': 'var(--bg-light)',
 				'border-light': 'var(--border-light)',
+				// grey‑blue palette overrides default blues
+				blue: {
+					50: '#f0f1f5',
+					100: '#d9dde6',
+					200: '#b0b6c1',
+					300: '#828ca0',
+					400: '#606a80',
+					500: '#4b5563',
+					600: '#3f4756',
+					700: '#343b49',
+					800: '#292e3f',
+					900: '#1f2433',
+				},
 				// Modern dark theme palette
 				dark: {
 					bg: '#0a0a0a',

@@ -12,8 +12,8 @@
 	--muted: #64748b; /* slate-500 – subtle, still readable for metadata */
 
 	/* Brand/action colors with strong contrast on white */
-	--primary: #1d4ed8; /* blue-700 – links/buttons, ~6.5:1 on #fff */
-	--primary-hover: #1e40af; /* blue-800 – hover/focus, ~8.6:1 on #fff */
+	--primary: #606a80; /* greyish-blue – toned down from bright blue */
+	--primary-hover: #50556a; /* slightly darker for hover/focus */
 	--accent: #0f172a; /* neutral accent for headings/logos */
 
 	/* Surfaces and borders */

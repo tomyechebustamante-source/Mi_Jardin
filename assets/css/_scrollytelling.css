@@ -130,7 +130,6 @@ main {
 
 .hero-image {
 	width: 100%;
-	max-height: 600px;
 	overflow: hidden;
 	border-radius: var(--radius-lg);
 	margin-top: var(--space-4xl);
@@ -138,7 +137,7 @@ main {
 
 .hero-image img {
 	width: 100%;
-	height: 100%;
+	height: auto; /* natural aspect ratio */
 	object-fit: cover;
 	display: block;
 }
@@ -161,68 +160,45 @@ main {
 	color: #4B2E2A;
 	margin-bottom: var(--space-4xl);
 	letter-spacing: -0.02em;
-	text-align: center;
+	text-align: center; /* default for most sections */
 }
 
-/* ===== MASONRY GALLERY ===== */
+/* About section headings should be left‑aligned to match paragraph text */
+.about-section .section-title {
+	text-align: left;
+}
+
+/* ===== GALLERY GRID ===== */
 .gallery-grid {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(100px, 5fr));
-	gap: var(--space-3xl);
-	auto-rows: 100px;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	gap: var(--space-2xl);
 	margin-bottom: var(--space-4xl);
+	grid-auto-rows: 1fr; /* make all rows equal height */
 }
 
-/* Items grandes alternados */
+/* large items span two columns but share row height */
 .project-item--large {
 	grid-column: span 1;
-	grid-row: span 1;
 }
 
-@media (min-width: 100px) {
+@media (min-width: 600px) {
 	.gallery-grid {
-		grid-template-columns: repeat(5, 2fr);
-		auto-rows: 220px;
-		gap: var(--space-2xl);
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 	}
-
 	.project-item--large {
 		grid-column: span 2;
-		grid-row: span 1;
-	}
-
-	.project-item--large:nth-child(5) {
-		grid-column: span 2;
 	}
 }
 
-@media (min-width: 500px) {
-	.gallery-grid {
-		grid-template-columns: repeat(3, 1fr);
-		auto-rows: 100px;
-	}
-
-	.project-item--large {
-		grid-column: span 2;
-		grid-row: span 2;
-	}
-
-	.project-item--large:nth-child(0) {
-		grid-column: span 2;
-		grid-row: span 2;
-	}
-
-	.project-item--large:nth-child(0) {
-		grid-column: span 2;
-		grid-row: span 1;
-	}
-}
+/* stray rules above removed */
 
 .project-item {
 	position: relative;
 	overflow: hidden;
 	border-radius: var(--radius-lg);
 	background: var(--color-bg-dark);
+	/* remove aspect-ratio rules that caused misalignment */
 }
 
 .project-link {
@@ -235,15 +211,17 @@ main {
 
 .project-link img {
 	width: 100%;
-	height: 100%;
+	height: 100%;          /* fill parent, which has aspect ratio */
 	object-fit: cover;
 	display: block;
-	transition: transform 0.4s ease;
+	/* no animation to keep performance optimal */
 }
 
 .project-item:hover .project-link img {
-	transform: scale(1.05);
+	/* retain static state, animation removed */
 }
+
+/* build step should produce a minified version style.min.css */
 
 /* ===== PROJECT OVERLAY ===== */
 .project-overlay {
@@ -390,7 +368,8 @@ main {
 .cta-button {
 	display: inline-block;
 	padding: var(--space-lg) var(--space-3xl);
-	background: rgb(57, 73, 147);
+	/* toned‑down grey‑blue for email CTA */
+	background: #606a80;
 	color: white;
 	text-decoration: none;
 	border-radius: var(--radius-sm);
@@ -398,26 +377,30 @@ main {
 	font-weight: var(--font-weight-semibold);
 	letter-spacing: 0.1em;
 	transition: all 0.3s ease;
-	border: 2px solid rgb(57, 73, 147);
+	border: 2px solid #606a80;
 	margin-top: var(--space-2xl);
 	margin-bottom: var(--space-3xl);
 }
 
 .cta-button:hover {
 	background: transparent;
-	color: rgb(57, 73, 147);
+	color: #606a80;
 }
 
 .contact-subtext {
 	font-size: var(--font-size-sm);
 	color: var(--color-text-secondary);
-	letter-spacing: 0.05em;
+	/* tighter spacing between words to keep linked names close */
+	letter-spacing: 0;
 }
 
 .contact-subtext .link {
-	color: rgb(57, 73, 147);
+	/* grey‑blue tint for socials */
+	color: #606a80;
 	text-decoration: underline;
-	transition: color 0.3s ease;
+	transition: color 0.3s ease, margin 0.2s ease;
+	/* give a little horizontal breathing space if needed */
+	margin: 0 0.25rem;
 }
 
 .contact-subtext .link:hover {
@@ -428,9 +411,22 @@ main {
 /* ===== FOOTER ===== */
 .footer {
 	padding: var(--space-3xl) var(--space-lg);
-	background: var(--color-bg);
-	border-top: 1px solid var(--color-border);
+}
+
+/* small paragraph containing GitHub link */
+.footer-link {
 	text-align: center;
+	margin-top: 0.5rem; /* tighter than original 1rem */
+}
+
+.footer-link a {
+	color: #606a80; /* grey‑blue tint matching socials */
+	text-decoration: underline;
+	transition: color 0.3s ease;
+}
+
+.footer-link a:hover {
+	color: #084f9c;
 }
 
 .footer-container {
@@ -448,10 +444,6 @@ main {
 	font-weight: var(--font-weight-light);
 }
 
-.footer-note {
-	color: var(--color-text-tertiary, rgba(255, 255, 255, 0.4)) !important;
-	font-size: var(--font-size-xs);
-}
 
 /* ===== UTILITIES ===== */
 .skip-link {
