@@ -1,9 +1,9 @@
 # Project Brief
 
-**Student:** [Your Name]  
-**Handle:** @[your-github-username]  
+**Student:** [Tomás]  
+**Handle:** @[tomseche]  
 **Course:** Web Design 2025 · Fall  
-**Date:** [Fill in date - Week 2]
+**Date:** [Fri 27 Feb]
 
 ---
 
@@ -80,7 +80,7 @@
 ### Color Palette
 
 <!-- List your main colors -->
-
+Café, Azul y Amarillo
 ### Typography
 
 <!-- What fonts/typeface approach will you use? -->
