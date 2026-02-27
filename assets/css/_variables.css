@@ -42,6 +42,7 @@
 	--color-border-light: #e2e8f0;
 	--color-border-medium: #cbd5e1;
 	--color-border-dark: #94a3b8;
+	--color-border: #e2e8f0;
 
 	/* Semantic colors */
 	--color-success: #10b981;
@@ -118,25 +119,11 @@
 	--z-popover: 60;
 	--z-tooltip: 70;
 
-	/* ===== GRADIENTS (chapter / hero) ===== */
+	/* ===== GRADIENTS (hero & chapters) ===== */
 	--gradient-hero: linear-gradient(135deg, #6B0F1A 0%, #4B2E2A 100%);
 	--gradient-chapter-1: linear-gradient(135deg, #A43A3F 0%, #FF6A00 100%);
 	--gradient-chapter-2: linear-gradient(135deg, #4B2E2A 0%, #F2C94C 100%);
 	--gradient-chapter-3: linear-gradient(135deg, #6B0F1A 0%, #7A554F 100%);
-
-	/* ===== SCROLLYTELLING GRADIENTS ===== */
-	--gradient-hero: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-	--gradient-chapter-1: linear-gradient(135deg, #2c3e50, #34495e);
-	--gradient-chapter-2: linear-gradient(135deg, #c0392b, #8e44ad);
-	--gradient-chapter-3: linear-gradient(135deg, #27ae60, #2ecc71);
-
-	/* ===== SCROLLYTELLING COLORS ===== */
-	--color-accent-blue: #3498db;
-	--color-accent-red: #e74c3c;
-	--color-accent-green: #2ecc71;
-	--color-overlay-dark: rgba(0, 0, 0, 0.4);
-	--color-card-bg: rgba(255, 255, 255, 0.05);
-	--color-card-border: rgba(255, 255, 255, 0.1);
 }
 
 /* ============================================

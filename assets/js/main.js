@@ -1,102 +1,89 @@
 /**
  * ============================================
- * WEB ATELIER (UDIT) - Student Project Template
+ * Portfolio Minimalista - Main JavaScript
  * ============================================
- * Main JavaScript: Scrollytelling Functionality
- * ============================================
- * PEDAGOGICAL NOTE: This file implements
- * scrollytelling with Intersection Observer API.
- * Progressive enhancement: site works without JS.
+ * Funciones esenciales:
+ * - Navegación suave
+ * - Accesibilidad
+ * - Hover efectos
  * ============================================
  */
 
-// ===== INTERSECTION OBSERVER FOR SCROLL-TRIGGERED ANIMATIONS =====
-// PEDAGOGICAL NOTE: Modern, performant way to detect when elements
-// enter viewport. Better than scroll event listeners.
-
-const observerOptions = {
-	threshold: 0.2, // Trigger when 20% of element is visible
-	rootMargin: '0px 0px -100px 0px', // Trigger slightly before element enters viewport
-};
-
-const observer = new IntersectionObserver((entries) => {
-	entries.forEach((entry) => {
-		if (entry.isIntersecting) {
-			// Element is visible, add 'visible' class to trigger CSS animations
-			entry.target.classList.add('visible');
-
-			// PEDAGOGICAL NOTE: Optional - stop observing after animation
-			// Uncomment below if you want one-time animations only
-			// observer.unobserve(entry.target);
-		}
-	});
-}, observerOptions);
-
-// Observe all sections with data-observe attribute
-// PEDAGOGICAL NOTE: data-* attributes are semantic way to mark elements for JS
-document.querySelectorAll('[data-observe]').forEach((section) => {
-	observer.observe(section);
-});
-
-// ===== SCROLL PROGRESS INDICATOR =====
-// PEDAGOGICAL NOTE: Shows user how far they've scrolled through the page
-
-function updateScrollProgress() {
-	const windowHeight = window.innerHeight;
-	const documentHeight = document.documentElement.scrollHeight;
-	const scrollTop = window.scrollY;
-
-	// Calculate percentage scrolled
-	const scrollPercent = (scrollTop / (documentHeight - windowHeight)) * 100;
-
-	// Update progress display
-	const progressElement = document.getElementById('progress');
-	if (progressElement) {
-		progressElement.textContent = Math.round(scrollPercent);
-	}
-}
-
-// Listen for scroll events (throttled by browser's requestAnimationFrame)
-window.addEventListener('scroll', updateScrollProgress);
-
-// Initialize on page load
-updateScrollProgress();
-
-// ===== SCROLL TO TOP FUNCTION =====
-// PEDAGOGICAL NOTE: Smooth scroll to top for better UX
-
-function scrollToTop() {
-	window.scrollTo({
-		top: 0,
-		behavior: 'smooth',
-	});
-}
-
-// Make function available globally for onclick in HTML
-// PEDAGOGICAL NOTE: In production, prefer addEventListener over onclick
-window.scrollToTop = scrollToTop;
-
-// ===== SMOOTH SCROLL BEHAVIOR =====
-// PEDAGOGICAL NOTE: CSS scroll-behavior is simpler, but this works in all browsers
-
+// ===== SMOOTH SCROLLING =====
 document.documentElement.style.scrollBehavior = 'smooth';
 
-// ===== REDUCED MOTION PREFERENCE =====
-// PEDAGOGICAL NOTE: Respect user's accessibility preferences
-// If user prefers reduced motion, disable scroll animations
+// ===== NAVIGATION CLEANUP =====
+// Elimina clase 'active' y previene comportamientos de scroll heredados
+document.addEventListener('DOMContentLoaded', () => {
+	// Remove scroll progress indicator if it exists
+	const infoOverlay = document.querySelector('.info-overlay');
+	if (infoOverlay) {
+		infoOverlay.remove();
+	}
 
-if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-	// Disable smooth scrolling
-	document.documentElement.style.scrollBehavior = 'auto';
+	// Remove any data-observe attributes
+	document.querySelectorAll('[data-observe]').forEach((el) => {
+		el.removeAttribute('data-observe');
+	});
 
-	// Optionally: add a class to body to disable CSS animations
-	document.body.classList.add('reduce-motion');
+	// Remove story-section classes and animations
+	document.querySelectorAll('.story-section, .parallax-section, .final-section').forEach((el) => {
+		el.classList.remove('story-section', 'parallax-section', 'final-section', 'visible');
+	});
+});
 
-	console.log('Reduced motion preference detected - animations disabled');
+// ===== HEADER SCROLL EFFECT =====
+let lastScrollTop = 0;
+const header = document.querySelector('.header');
+
+if (header) {
+	window.addEventListener('scroll', () => {
+		const scrollTop = window.scrollY;
+
+		// Add small shadow when scrolled
+		if (scrollTop > 10) {
+			header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+		} else {
+			header.style.boxShadow = 'none';
+		}
+
+		lastScrollTop = scrollTop;
+	});
 }
 
-// ===== CONSOLE LOG FOR DEBUGGING =====
-// PEDAGOGICAL NOTE: Helpful during development, remove in production
+// ===== ACTIVE NAV LINK =====
+// Destaca el link activo según la posición del scroll
+const navLinks = document.querySelectorAll('.nav-link');
+
+function updateActiveNavLink() {
+	const sections = document.querySelectorAll('section[id]');
+	let current = '';
+
+	sections.forEach((section) => {
+		const sectionTop = section.offsetTop;
+		const sectionHeight = section.clientHeight;
+
+		if (window.scrollY >= sectionTop - 200) {
+			current = section.getAttribute('id');
+		}
+	});
+
+	navLinks.forEach((link) => {
+		link.classList.remove('active');
+		if (link.getAttribute('href').includes(current)) {
+			link.classList.add('active');
+		}
+	});
+}
+
+window.addEventListener('scroll', updateActiveNavLink);
+
+// ===== RESPETA PREFERENCIA DE MOVIMIENTO REDUCIDO =====
+// Accesibilidad: desactiva animaciones si el usuario lo prefiere
+if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+	document.body.classList.add('reduce-motion');
+	document.body.style.scrollBehavior = 'auto';
+}
 
 console.log('✅ Scrollytelling initialized');
 console.log(`📊 Observing ${document.querySelectorAll('[data-observe]').length} sections`);

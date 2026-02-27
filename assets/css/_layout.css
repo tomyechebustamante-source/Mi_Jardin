@@ -33,6 +33,10 @@ main {
 .grid {
 	display: grid;
 	gap: var(--space-xl);
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  padding: var(--space-lg) var(--space-2xl);
+  justify-content: center;
+  align-items: center;
 }
 
 .grid-2 {
